@@ -1,6 +1,7 @@
 const express = require('express')
 const { MongoClient } = require('mongodb')
 
+// Overview do MongoDB, copiar a url e substituir <password> pela senha
 const dbUrl = "mongodb+srv://admin:yNQ2zWi9cmqfKl4x@cluster0.orfbrt5.mongodb.net/?retryWrites=true&w=majority"
 const client = new MongoClient(dbUrl)
 const dbName = "ocean-backend"
