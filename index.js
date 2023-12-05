@@ -1,10 +1,13 @@
+
+require('dotenv').config()
+
 const express = require('express')
 const { MongoClient, ObjectId } = require('mongodb')
 
 // Overview do MongoDB, copiar a url e substituir <password> pela senha
-const dbUrl = "mongodb+srv://admin:yNQ2zWi9cmqfKl4x@cluster0.orfbrt5.mongodb.net/?retryWrites=true&w=majority"
+const dbUrl = process.env.DATABASE_URL
 const client = new MongoClient(dbUrl)
-const dbName = "ocean-backend"
+const dbName = process.env.DATABASE_NAME
 
 async function main() {
   console.log("Conectando ao banco de dados...")
