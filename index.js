@@ -33,8 +33,9 @@ const lista = ["Rick Sanchez", "Morty Smith", "Summer Smith"]
 //              0               1              2
 
 // Read All - [GET] /item
-app.get("/item", function (req, res) {
-  res.send(lista.filter(Boolean))
+app.get("/item", async function (req, res) {
+  const itens = await collection.find().toArray()
+  res.send(itens)
 })
 
 // Read by ID - [GET] /item/:id
