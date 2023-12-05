@@ -114,7 +114,7 @@ app.delete("/item/:id", async function (req, res) {
   res.send("Item removido com sucesso!")
 })
 
-app.listen(3000)
+app.listen(process.env.PORT) || 3000
 
 }
 
