@@ -1,8 +1,8 @@
 
 require('dotenv').config()
-
 const express = require('express')
 const { MongoClient, ObjectId } = require('mongodb')
+const cors = require('cors')
 
 // Overview do MongoDB, copiar a url e substituir <password> pela senha
 const dbUrl = process.env.DATABASE_URL
@@ -17,6 +17,7 @@ async function main() {
   const collection = db.collection("item")
 
 const app = express()
+app.use(cors())
 
 // Registrar um Middleware de JSON
 // Indica que todas as requisições podem receber
