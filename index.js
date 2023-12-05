@@ -1,5 +1,5 @@
 const express = require('express')
-const { MongoClient } = require('mongodb')
+const { MongoClient, ObjectId } = require('mongodb')
 
 // Overview do MongoDB, copiar a url e substituir <password> pela senha
 const dbUrl = "mongodb+srv://admin:yNQ2zWi9cmqfKl4x@cluster0.orfbrt5.mongodb.net/?retryWrites=true&w=majority"
@@ -39,13 +39,18 @@ app.get("/item", async function (req, res) {
 })
 
 // Read by ID - [GET] /item/:id
-app.get("/item/:id", function (req, res) {
+app.get("/item/:id", async function (req, res) {
   // Pegamos o ID de rota e subtraímos 1 para ficar
+
   // equivalente ao índice da lista que começa em 0
-  const id = req.params.id - 1
+  // const id = req.params.id - 1
+
+  const id = req.params.id
 
   // Acessamos o item na lista, usando o índice corrigido
-  const item = lista[id]
+  const item = await collection.findOne({
+    _id: new ObjectId(id)
+  })
 
   // Enviamos o item como resposta do endpoint
   res.send(item)
